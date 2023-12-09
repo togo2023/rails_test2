@@ -1,0 +1,12 @@
+<h1>設定</h1>
+<%= link_to "アカウント", root_path %>
+<%= link_to "プロフィール", user_path(@user.id) %>
+<h1>プロフィール</h1>
+<%= link_to "編集", edit_user_path(@user.id) %>
+<p>アイコン画像</p>
+<%= @user.image_user %>
+<p>名前</p>
+<%= @user.name %>
+<p>自己紹介</p>
+<%= @user.introduction %>
+

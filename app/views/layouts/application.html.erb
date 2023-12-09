@@ -8,9 +8,21 @@
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
+    <header>
+      <%= link_to "Potepan Share", root_path %>
+      <!-- ログインボタン -->
+      <!-- 新規登録ボタン -->
+    </header>
+
     <%= yield %>
+
+    <footer>
+      <%= link_to "Potepan Share", root_path %>
+      <p>Copyright © Potepan Share 2023 All rights reserverd<p>
+    </footer> 
   </body>
 </html>

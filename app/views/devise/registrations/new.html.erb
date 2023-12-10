@@ -5,22 +5,22 @@
 
   <div class="field">
     <%= f.label :name, "ユーザー名*" %><br />
-    <%= f.text_field :name %>
+    <%= f.text_field :name,autocomplete: "name", placeholder: "ユーザー名を入力" %>
   </div>
 
   <div class="field">
     <%= f.label :email, "メールアドレス*" %><br />
-    <%= f.email_field :email, autocomplete: "email" %>
+    <%= f.email_field :email, autocomplete: "email", placeholder: "メールアドレスを入力" %>
   </div>
 
   <div class="field">
     <%= f.label :password, "パスワード*" %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
+    <%= f.password_field :password, autocomplete: "new-password", placeholder: "パスワードを入力" %>
   </div>
 
   <div class="field">
     <%= f.label :password_confirmation, "確認用パスワード*" %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+    <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "確認用パスワードを入力" %>
   </div>
 
   <div class="actions">

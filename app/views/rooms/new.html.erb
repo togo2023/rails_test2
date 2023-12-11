@@ -1,0 +1,34 @@
+<h1>施設新規登録</h1>
+
+<%= form_with model: @room do |f| %>
+  <table>
+    <tr>
+      <th><%= f.label :room_name, "施設名" %><span>*</span></th>
+      <td><%= f.text_field :room_name, placeholder: "ルーム名を入力" %></td>
+    </tr>
+
+    <tr>
+      <th><%= f.label :room_introduction, "施設詳細" %><span>*</span></th>
+      <td><%= f.text_area :room_introduction, placeholder: "施設詳細を入力" %></td>
+    </tr>
+
+    <tr>
+      <th><%= f.label :money, "料金" %><span>*</span></th>
+      <td><%= f.text_field :money, placeholder: "1日あたりの料金を入力" %></td>
+    </tr>
+
+    <tr>
+      <th><%= f.label :address, "住所" %><span>*</span></th>
+      <td><%= f.text_field :address, placeholder: "住所を入力" %></td>
+    </tr>
+
+    <tr>
+      <th><%= f.label :image_room, "施設画像" %></th>
+      <td><%= f.file_field :image_room %></td>
+    </tr>
+  </table>
+
+  <%= f.hidden_field :user_id, value: @user.id %>
+  <p><%= f.submit "保存" %></p>
+  <%= link_to "キャンセル", :back %>
+<% end %>

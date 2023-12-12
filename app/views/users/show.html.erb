@@ -7,7 +7,7 @@
 <% if @user.image_user.attached? %>
   <p><%= image_tag(rails_blob_path(@user.image_user), size: "50x50",  alt: "アイコン画像") %></p>
 <% else %>
-  <p><%= image_tag("default_user.png", size: "50x50", alt: "アイコン画像") %></p>
+  <p><%= image_tag("default_user.png", alt: "アイコン画像") %></p>
 <% end %>
 <p>名前</p>
 <%= @user.name %>

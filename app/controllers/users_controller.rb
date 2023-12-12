@@ -12,7 +12,6 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    ensure_correct_user
     if @user.update(params.require(:user).permit(:name, :introduction, :image_user))
       redirect_to user_path(@user)
     else

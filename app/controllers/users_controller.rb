@@ -16,7 +16,7 @@ class UsersController < ApplicationController
     if @user.update(params.require(:user).permit(:name, :introduction, :image_user))
       redirect_to user_path(@user)
     else
-      render :edit
+      render "edit"
     end
   end
 

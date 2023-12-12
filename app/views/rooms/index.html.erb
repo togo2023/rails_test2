@@ -15,10 +15,10 @@
     <% @rooms.each do |room| %>
       <tr>
         <td>
-          <% if @user.image_room.attached? %>
-            <%= image_tag(rails_blob_path(@user.image_room), size: "50x50",  alt: "ルーム画像") %>
+          <% if room.image_room.attached? %>
+            <%= image_tag(rails_blob_path(room.image_room), size: "50x50",  alt: "ルーム画像") %>
           <% else %>
-            <%= image_tag("default2_user.png", size: "50x50",  alt: "ルーム画像") %>
+            <%= image_tag("default_room.png", size: "50x50",  alt: "ルーム画像") %>
           <% end %>
         </td>
         <td><%= room.room_name %></td> <!-- 後からリンクへ変更 -->

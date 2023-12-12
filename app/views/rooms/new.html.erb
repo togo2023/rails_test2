@@ -28,7 +28,7 @@
     </tr>
   </table>
 
-  <%= f.hidden_field :user_id, value: @user.id %>
+  <%= f.hidden_field :user_id, value: current_user.id %>
   <p><%= f.submit "保存" %></p>
   <%= link_to "キャンセル", :back %>
 <% end %>

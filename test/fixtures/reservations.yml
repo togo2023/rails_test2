@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  room_id: 1
+  people: 1
+  check_in: 2023-12-13 11:47:34
+  check_out: 2023-12-13 11:47:34
+
+two:
+  room_id: 1
+  people: 1
+  check_in: 2023-12-13 11:47:34
+  check_out: 2023-12-13 11:47:34

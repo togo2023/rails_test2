@@ -11,3 +11,21 @@
 <%= "¥#{@room.money}~" %>
 <%= @room.address %>
 <%= @room.room_introduction %>
+
+<%= form_with model: @reservation, url: confirm_path do |f| %>
+  <%= f.label :check_in, "チャックイン" %>
+  <%= f.date_field :check_in %>
+
+  <%= f.label :check_out, "チェックアウト" %>
+  <%= f.date_field :check_out %>
+
+  <%= f.label :people, "人数" %>
+  <%= f.text_field :people, placeholder: "0" %>
+
+  <%= f.hidden_field :user_id, value: current_user.id %>
+  <%= f.hidden_field :room_id, value: @room.id %>
+
+  <%= f.submit "予約する" %>
+<% end %>
+
+ 

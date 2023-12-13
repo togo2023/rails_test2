@@ -18,6 +18,7 @@
       <% if user_signed_in? %>
         <%= link_to "施設の新規登録", new_room_path %>
         <%= link_to "施設登録済み一覧", rooms_path %>
+        <%= link_to "予約済み一覧", reservations_path %>
         <%= link_to "アカウント設定", account_path(current_user) %>
         <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
       <% else %>

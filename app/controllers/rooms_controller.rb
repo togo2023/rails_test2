@@ -49,5 +49,4 @@ class RoomsController < ApplicationController
       redirect_to :rooms
     end
   end
-
 end

@@ -20,7 +20,6 @@ class RoomsController < ApplicationController
   def show
     @room = Room.find(params[:id])
     @reservation = Reservation.new
-    ensure_correct_user
   end
 
   def edit

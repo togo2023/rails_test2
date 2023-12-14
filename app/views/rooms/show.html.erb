@@ -1,5 +1,7 @@
 <%= link_to "← 戻る", :back %>
-<%= link_to "編集", edit_room_path(@room.id) %>
+<% if @room.user_id == current_user.id %>
+  <%= link_to "編集", edit_room_path(@room.id) %>
+<% end %>
 
 <% if @room.image_room.attached? %>
   <p><%= image_tag(rails_blob_path(@room.image_room), size: "50x50",  alt: "ルーム画像") %></p>

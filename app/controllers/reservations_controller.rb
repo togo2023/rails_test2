@@ -6,6 +6,7 @@ class ReservationsController < ApplicationController
 
   def confirm
     @reservation = Reservation.new(params_reservation)
+    @room = Room.find(params[:reservation][:room_id])
     calculation
     render "rooms/show" if @reservation.invalid? 
   end
@@ -28,6 +29,7 @@ class ReservationsController < ApplicationController
   def edit_confirm 
     @reservation = Reservation.find(params[:id])
     @reservation.attributes = params_reservation
+    @room = Room.find(params[:reservation][:room_id])
     calculation
     render "edit" if @reservation.invalid?
   end
@@ -60,9 +62,9 @@ class ReservationsController < ApplicationController
   end
 
   def calculation
-    @room = Room.find(params[:reservation][:room_id])
-    @day = @reservation.day_count 
-    @total = (@reservation.check_out - @reservation.check_in).to_i / 86400 * @reservation.people * @room.money
+    unless @reservation.check_out.nil? || @reservation.check_in.nil? || @reservation.people.nil? || @room.money.nil?
+      @day = (@reservation.check_out - @reservation.check_in).to_i / 86400
+      @total = (@reservation.check_out - @reservation.check_in).to_i / 86400 * @reservation.people * @room.money
+    end
   end
-
 end

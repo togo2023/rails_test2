@@ -1,0 +1,28 @@
+<h1>再予約する</h1>
+
+<% if @reservation.room.image_room.attached? %>
+  <%= image_tag(rails_blob_path(@reservation.room.image_room), size: "50x100", alt: "ルーム画像") %>
+<% else %>
+  <%= image_tag("default_room.png", size: "50x100", alt: "ルーム画像") %>
+<% end %>
+
+<%= @reservation.room.room_name %>
+<%= "¥#{@reservation.room.money}~" %>
+<%= @reservation.room.address %>
+<%= @reservation.room.room_introduction %>
+
+<%= form_with model: @reservation, url: edit_confirm_reservation_path(@reservation.id) do |f| %>
+  <%= f.label :check_in, "チェックイン" %><span>*</span>
+  <%= f.date_field :check_in %>
+  <%= f.label :check_out, "チェックアウト" %><span>*</span>
+  <%= f.date_field :check_out %>
+  <%= f.label :people, "人数" %><span>*</span>
+  <%= f.text_field :people, placeholder: "0" %>
+  <%= f.hidden_field :user_id, value: current_user.id %>
+  <%= f.hidden_field :room_id, value: @reservation.room.id %>
+
+  <%= f.submit "再予約する" %>
+  <%= link_to "キャンセル", reservations_path %>
+<% end %>
+
+

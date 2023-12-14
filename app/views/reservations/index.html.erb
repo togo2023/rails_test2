@@ -30,7 +30,7 @@
                                                                    <!-- 後から３桁区切りにする -->
         <td><%= reservation.check_in.to_s(:room) %></td>
         <td><%= reservation.check_out.to_s(:room) %></td>
-        <td><%= reservation.people %></td>
+        <td><%= "#{reservation.people}人" %></td>
         <td><%= reservation.created_at.to_s(:reservation) %></td>
         <td><%= link_to "再予約", edit_reservation_path(reservation.id) %></td>   <!-- 後からドロップダウンメニュー -->
         <td><%= link_to "予約を削除", reservation_path(reservation.id), method: :delete, data: { confirm: "本当に削除しますか？" } %></td>  <!-- 後からドロップダウンメニュー -->

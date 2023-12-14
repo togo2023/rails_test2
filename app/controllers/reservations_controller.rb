@@ -22,6 +22,7 @@ class ReservationsController < ApplicationController
 
   def edit
     @reservation = Reservation.find(params[:id])
+    ensure_correct_user
   end
 
   def edit_confirm 
@@ -47,6 +48,12 @@ class ReservationsController < ApplicationController
   end
 
   private
+
+  def ensure_correct_user
+    unless @reservation.user_id == current_user.id
+      redirect_to reservations_path
+    end
+  end
 
   def params_reservation
     params.require(:reservation).permit(:check_in, :check_out, :people, :user_id, :room_id, :total_money)

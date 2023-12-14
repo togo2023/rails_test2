@@ -19,5 +19,4 @@ class Reservation < ApplicationRecord
     return if check_out.blank? || check_in.blank?
     errors.add(:check_out, "はチェックイン以降のものを選択してください") if check_out < check_in
   end
-
 end

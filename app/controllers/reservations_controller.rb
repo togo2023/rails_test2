@@ -6,8 +6,13 @@ class ReservationsController < ApplicationController
 
   def confirm
     @reservation = Reservation.new(params_reservation)
-    @room = Room.find(params[:reservation][:room_id])
-    calculation
+    if @reservation.invalid?
+      @room = Room.find(params[:reservation][:room_id])
+      render "rooms/show"
+    else
+      @room = Room.find(params[:reservation][:room_id])
+      calculation
+    end
   end
 
   def create
@@ -66,10 +71,4 @@ class ReservationsController < ApplicationController
       @total = (@reservation.check_out - @reservation.check_in).to_i / 86400 * @reservation.people * @room.money
     end
   end
-  
-  def confirm_automatic
-  if @reservation.people.nil? || @reservation.check_in.nil? || @reservation.check_out.nil?
-    render "rooms/show"
-  end
-end
 end

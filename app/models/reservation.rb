@@ -7,6 +7,7 @@ class Reservation < ApplicationRecord
     validates :check_out
     validates :people, numericality: { greater_than_or_equal_to: 1 }
   end
+
   validate :date_before_start
   validate :date_before_finish
 

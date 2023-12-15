@@ -42,6 +42,10 @@ class RoomsController < ApplicationController
     redirect_to :rooms
   end
 
+  def search
+    @rooms = Room.search(params[:keyword])
+  end
+
   private
 
   def ensure_correct_user

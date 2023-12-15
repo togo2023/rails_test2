@@ -7,14 +7,18 @@ Rails.application.routes.draw do
 
   resources :accounts, only: [:show]
 
-  resources :rooms
-
+  resources :rooms do
+    collection do
+      get 'search'
+    end
+  end
+    
   resources :reservations, only: [:index, :create, :edit, :update, :destroy] do
     collection do
-      post 'confirm'
+      get 'confirm'
     end
     member do
-      patch 'edit_confirm'
+      get 'edit_confirm'
     end
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

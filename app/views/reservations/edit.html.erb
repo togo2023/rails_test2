@@ -11,7 +11,7 @@
 <%= @reservation.room.address %>
 <%= @reservation.room.room_introduction %>
 
-<%= form_with model: @reservation, url: edit_confirm_reservation_path(@reservation.id) do |f| %>
+<%= form_with model: @reservation, url: edit_confirm_reservation_path(@reservation.id), method: :get do |f| %>
   <%= f.label :check_in, "チェックイン" %><span>*</span>
   <%= f.date_field :check_in %>
   <%= f.label :check_out, "チェックアウト" %><span>*</span>

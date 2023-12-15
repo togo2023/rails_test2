@@ -14,7 +14,7 @@
 <%= @room.address %>
 <%= @room.room_introduction %>
 
-<%= form_with model: @reservation, url: confirm_reservations_path do |f| %>
+<%= form_with model: @reservation, method: :get, url: confirm_reservations_path do |f| %>
   <%= f.label :check_in, "チャックイン" %>
   <%= f.date_field :check_in %>
 

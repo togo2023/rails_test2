@@ -6,11 +6,10 @@ class ReservationsController < ApplicationController
 
   def confirm
     @reservation = Reservation.new(params_reservation)
+    @room = Room.find(params[:reservation][:room_id])
     if @reservation.invalid?
-      @room = Room.find(params[:reservation][:room_id])
       render "rooms/show"
     else
-      @room = Room.find(params[:reservation][:room_id])
       calculation
     end
   end
@@ -35,8 +34,11 @@ class ReservationsController < ApplicationController
     @reservation.attributes = params_reservation
     @room = Room.find(params[:reservation][:room_id])
     ensure_correct_user
-    calculation
-    render "edit" if @reservation.invalid?
+    if @reservation.invalid?
+      render "edit"
+    else
+      calculation
+    end
   end
 
   def update

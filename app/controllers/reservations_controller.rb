@@ -34,6 +34,7 @@ class ReservationsController < ApplicationController
     @reservation = Reservation.find(params[:id])
     @reservation.attributes = params_reservation
     @room = Room.find(params[:reservation][:room_id])
+    ensure_correct_user
     calculation
     render "edit" if @reservation.invalid?
   end

@@ -6,9 +6,13 @@ class Room < ApplicationRecord
   validates :room_name, :room_introduction, :money, :address, presence: true
   validates :money, numericality: { greater_than_or_equal_to: 1 }
 
-  def self.search(keyword)
-    if search
-      Room.where('address LIKE(?)', "%#{keyword}%")
+  def self.search(erea,keyword)
+    if erea && keyword
+      Room.where(['(room_name LIKE(?) OR room_introduction LIKE(?)) AND address LIKE(?)', "%#{keyword}%", "%#{keyword}%", "%#{erea}%"])
+    elsif erea && keyword.blank?
+      Room.where('address LIKE(?)', "%#{erea}%")
+    elsif erea.blank? && keyword
+      Room.where(['room_name LIKE(?) OR room_introduction LIKE(?)', "%#{keyword}%", "%#{keyword}%"])
     else
       Room.all
     end

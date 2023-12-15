@@ -1,1 +1,21 @@
-<h1><%= @rooms.count %><span>件が見つかりました。</h1>
+<%= form_with url: search_rooms_path, method: :get do |f| %>
+  <%= f.text_field :erea, placeholder: "エリア名を入力" %>
+  <%= f.text_field :keyword, placeholder: "キーワード名を入力" %>
+  <%= f.submit "検索" %>
+<% end %>
+
+<h1><%= @rooms.count %><span>件が見つかりました。</span></h1>
+
+<% @rooms.each do |room| %>
+  <% if room.image_room.attached? %>
+    <%= image_tag(rails_blob_path(room.image_room), size: "50x50",  alt: "ルーム画像") %>
+  <% else %>
+    <%= image_tag("default_room.png", size: "50x50",  alt: "ルーム画像") %>
+  <% end %>  
+
+  <%= room.room_name %>
+  <%= room.address %>
+  <%= room.room_introduction %>
+  <%= "¥#{room.money}~" %>
+  <%= link_to "詳細はこちら", room_path(room.id) %>
+<% end %>

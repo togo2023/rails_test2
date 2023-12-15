@@ -1,5 +1,5 @@
 <%= link_to "← 戻る", :back %>
-<% if @room.user_id == current_user.id %>
+<% if user_signed_in? && @room.user_id == current_user.id %>
   <%= link_to "編集", edit_room_path(@room.id) %>
 <% end %>
 
@@ -24,7 +24,9 @@
   <%= f.label :people, "人数" %>
   <%= f.text_field :people, placeholder: "0" %>
 
-  <%= f.hidden_field :user_id, value: current_user.id %>
+  <% if user_signed_in? && @room.user_id == current_user.id %>
+    <%= f.hidden_field :user_id, value: current_user.id %>
+  <% end %>
   <%= f.hidden_field :room_id, value: @room.id %>
 
   <%= f.submit "予約する" %>

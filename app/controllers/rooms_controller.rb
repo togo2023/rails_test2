@@ -1,4 +1,6 @@
 class RoomsController < ApplicationController
+  before_action :authenticate_user! , except: [:search, :show]
+
   def index
     @user = User.find(current_user.id)
     @rooms = @user.rooms
@@ -43,7 +45,7 @@ class RoomsController < ApplicationController
   end
 
   def search
-    @rooms = Room.search(params[:keyword])
+    @rooms = Room.search(params[:erea],params[:keyword])
   end
 
   private

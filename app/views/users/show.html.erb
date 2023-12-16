@@ -1,16 +1,31 @@
-<h1>設定</h1>
-<%= link_to "アカウント", account_path(@user.id) %>
-<%= link_to "プロフィール", user_path(@user.id) %>
-<h1>プロフィール</h1>
-<%= link_to "編集", edit_user_path(@user.id) %>
-<p>アイコン画像</p>
-<% if @user.image_user.attached? %>
-  <p><%= image_tag(rails_blob_path(@user.image_user), size: "50x50",  alt: "アイコン画像") %></p>
-<% else %>
-  <p><%= image_tag("default_user.png", alt: "アイコン画像") %></p>
-<% end %>
-<p>名前</p>
-<%= @user.name %>
-<p>自己紹介</p>
-<%= @user.introduction %>
+<div class="users-check-container">
+  <h1>設定</h1>
 
+  <div class="clearfix">
+    <div class="users-float">
+      <div class="users-link-container">
+        <div class="d-grid gap-2 col-6">
+          <%= link_to "アカウント", account_path(@user.id),class: "a btn btn-primary" %>
+          <%= link_to "プロフィール", user_path(@user.id),class: "a btn btn-primary" %>
+        </div>
+      </div>
+    </div>
+
+    <div class="users-float">
+      <div class="users-header">
+        <h1>プロフィール</h1>
+        <%= link_to "編集", edit_user_path(@user.id), class: "a btn btn-outline-dark" %>
+      </div>
+      <p>アイコン画像</p>
+      <% if @user.image_user.attached? %>
+        <%= image_tag(rails_blob_path(@user.image_user), size: "50x50",  alt: "アイコン画像") %>
+      <% else %>
+        <%= image_tag("default_user.png", size: "50x50",  alt: "アイコン画像") %>
+      <% end %>
+      <p>名前</p>
+      <%= @user.name %>
+      <p>自己紹介</p>
+      <%= @user.introduction %>
+    </div>
+  </div>
+</div>

@@ -1,3 +1,48 @@
-// Place all the styles related to the Users controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: https://sass-lang.com/
+// users/show、accounts/show共通
+
+.users-check-container {
+  padding: 60px 50px 200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.users-float {
+  float: left;
+}
+
+.users-link-container {
+  width: 250px;
+}
+
+.users-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.registrations-edit-header {
+  margin-bottom: 30px;
+}
+
+.registrations-field {
+  padding: 15px 0;
+  display: flex;
+  align-items: center;
+}
+
+.registrations-label {
+  font-weight: 600;
+  width: 250px; 
+}
+
+.registrations-blank {
+ width: 700px;
+}
+
+.registrations-actions {
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  justify-content: flex-end;
+}

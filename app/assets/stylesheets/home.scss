@@ -1,3 +1,97 @@
-// Place all the styles related to the home controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: https://sass-lang.com/
+//共通ページ
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+.color {
+  color: #fff;
+}
+
+.a {
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+}
+
+.header {
+  background: #555555;
+}
+
+.inner {
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 150px;
+  height: 80px;
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+}
+
+.header-nav {
+  margin-left: auto;
+}
+
+.footer {
+  background: #555555;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 150px;
+  height: 500px;
+}
+
+.footer-container {
+  max-width: auto;
+  padding-top: 230px;
+}
+
+.footer-container a {
+  font-size: 55px;
+}
+
+//home/indexページ
+
+.backimage {
+  background-image: url(image.jpg); 
+  background-size:  cover;         
+  height: 750px;  
+  padding-top: 80px;
+  margin-bottom: 150px;
+  background-position: center;
+}
+
+.backimage h1 {
+  color: #fff;
+  font-size: 80px;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.home-firm-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 500px 0;
+  width: 100%;
+}
+
+.home-all-image {
+  display: flex;
+  justify-content: space-between;
+  max-width: 100%;
+  margin: 0 50px 150px;
+}
+
+.home-image {
+  background-image: cover;
+  width: 300px;
+  height: 500px;
+}

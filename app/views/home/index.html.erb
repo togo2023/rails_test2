@@ -1,29 +1,32 @@
-<h1>Potepan Shareでまだ体験したことのない旅をしよう</h1>
+<div class="backimage">
+  <h1>Potepan Shareで<br>まだ体験したことのない<br>旅をしよう</h1>
 
-<%= form_with url: search_rooms_path, method: :get do |f| %>
-  <%= f.text_field :erea, placeholder: "エリア名を入力" %>
-  <%= f.submit "検索" %>
-<% end %>
+  <%= form_with url: search_rooms_path, method: :get,class: "home-firm-container" do |f| %>
+  <%= f.text_field :erea, placeholder: "エリア名を入力",class: "form-control" %>
+  <%= f.submit "検索", class: "btn btn-primary btn-lg" %>
+  <% end %>
+</div>
 
-<h2>おすすめのエリア</h2>
+<h2  class="h1">おすすめのエリア</h2>
 
-<%= form_with url: search_rooms_path, method: :get do |f| %>
+<div class="home-all-image">
+  <%= form_with url: search_rooms_path, method: :get do |f| %>
   <%= f.hidden_field :erea, value: "東京" %>
-  <%= image_submit_tag("tokyo.jpg") %>
-<% end %>
+  <%= image_submit_tag("tokyo.jpg", class: "home-image") %>
+  <% end %>
 
-<%= form_with url: search_rooms_path, method: :get do |f| %>
+  <%= form_with url: search_rooms_path, method: :get do |f| %>
   <%= f.hidden_field :erea, value: "大阪" %>
-  <%= image_submit_tag("osaka.jpg") %>
-<% end %>
+  <%= image_submit_tag("osaka.jpg", class: "home-image") %>
+  <% end %>
 
-<%= form_with url: search_rooms_path, method: :get do |f| %>
+  <%= form_with url: search_rooms_path, method: :get do |f| %>
   <%= f.hidden_field :erea, value: "京都" %>
-  <%= image_submit_tag("kyoto.jpg") %>
-<% end %>
+  <%= image_submit_tag("kyoto.jpg", class: "home-image") %>
+  <% end %>
 
-<%= form_with url: search_rooms_path, method: :get do |f| %>
+  <%= form_with url: search_rooms_path, method: :get do |f| %>
   <%= f.hidden_field :erea, value: "北海道" %>
-  <%= image_submit_tag("hokkaido.jpg") %>
-<% end %>
-
+  <%= image_submit_tag("hokkaido.jpg", class: "home-image") %>
+  <% end %>
+</div>

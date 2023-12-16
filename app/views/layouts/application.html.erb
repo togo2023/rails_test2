@@ -9,29 +9,50 @@
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
   </head>
 
   <body>
-    <header>
-      <%= link_to "Potepan Share", root_path %>
+    <header class="header">
+      <div class="header-inner inner">
+        <h1 class="header-title"><%= link_to "Potepan Share", root_path, class: "a color" %></h1>
+        <nav class="header-nav">
+          <% if user_signed_in? %>
+            <div class="dropdown">
+              <a class="a dropdown-toggle" role="button" data-bs-toggle="dropdown">
+                <% if current_user.image_user.attached? %>
+                  <%= image_tag(rails_blob_path(current_user.image_user), size: "50x50",  alt: "アイコン画像") %>
+                <% else %>
+                  <%= image_tag("default_user.png", size: "50x50",  alt: "アイコン画像") %>
+                <% end %>
+                <span class="color"><%= current_user.name %></span>
+              </a>
 
-      <% if user_signed_in? %>
-        <%= link_to "施設の新規登録", new_room_path %>
-        <%= link_to "施設登録済み一覧", rooms_path %>
-        <%= link_to "予約済み一覧", reservations_path %>
-        <%= link_to "アカウント設定", account_path(current_user) %>
-        <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-      <% else %>
-        <%= link_to "ログイン", new_user_session_path %>
-        <%= link_to "新規登録", new_user_registration_path %>
-      <% end %>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                <%= link_to "施設の新規登録", new_room_path, class: "dropdown-item" %>
+                <%= link_to "施設登録済み一覧", rooms_path, class: "dropdown-item" %>
+                <%= link_to "予約済み一覧", reservations_path, class: "dropdown-item" %>
+                <%= link_to "アカウント設定", account_path(current_user), class: "dropdown-item" %>
+                <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+              </div>
+            </div>
+          <% else %>
+            <%= link_to "ログイン", new_user_session_path, class: "btn btn-primary" %>
+            <%= link_to "新規登録", new_user_registration_path, class: "btn btn-primary" %>
+          <% end %>
+        </nav>
+      </div>
     </header>
 
     <%= yield %>
 
-    <footer>
-      <%= link_to "Potepan Share", root_path %>
-      <p>Copyright © Potepan Share 2023 All rights reserverd<p>
+    <footer class="footer">
+      <div class="footer-container">
+        <%= link_to "Potepan Share", root_path, class: "a color" %>
+        <p class="color">Copyright © Potepan Share 2023 All rights reserverd<p>
+      </div>
     </footer> 
   </body>
 </html>

@@ -1,33 +1,46 @@
-<h2>設定</h2>
+<div class="users-check-container">
+  <h1>設定</h1>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+  <div class="clearfix">
+    <div class="users-float">
+      <div class="users-link-container">
+        <div class="d-grid gap-2 col-6">
+          <%= link_to "アカウント", account_path(@user.id),class: "a btn btn-primary" %>
+          <%= link_to "プロフィール", user_path(@user.id),class: "a btn btn-primary" %>
+        </div>
+      </div>
+    </div>
 
-  <div class="field">
-    <%= f.label :email %>
-    <%= f.email_field :email, autocomplete: "email" %>
+    <div class="users-float">
+      <h1 class="registrations-edit-header">アカウント</h1>
+
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+
+      <div class="registrations-field">
+        <%= f.label :email,class: "registrations-label" %>
+        <%= f.email_field :email, autocomplete: "email",class: "registrations-blank form-control-lg" %>
+      </div>
+
+      <div class="registrations-field">
+        <%= f.label :password_change,class: "registrations-label" %>
+        <%= f.password_field :password, autocomplete: "new-password",class: "registrations-blank form-control-lg" %>
+      </div>
+
+      <div class="registrations-field">
+        <%= f.label :password_confirmation,class: "registrations-label" %>
+        <%= f.password_field :password_confirmation, autocomplete: "new-password",class: "registrations-blank form-control-lg" %>
+      </div>
+
+      <div class="registrations-field">
+        <%= f.label :current_password,class: "registrations-label" %>
+        <%= f.password_field :current_password, autocomplete: "current-password",class: "registrations-blank form-control-lg" %>
+      </div>
+
+      <div class="registrations-actions">
+        <%= link_to "キャンセル", :back, class: "a btn btn-outline-secondary" %>
+        <%= f.submit "保存", class: "btn btn-outline-primary" %>
+      </div>
+      <% end %>
+    </div>
   </div>
-
-  <div class="field">
-    <%= f.label :password_change %><br>
-    <span>※変更する場合のみ</span>
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br>
-    <span>※変更する場合のみ</span>
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :current_password %>
-    <%= f.password_field :current_password, autocomplete: "current-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "保存" %>
-  </div>
-  <%= link_to "キャンセル", :back %>
-<% end %>
-
+</div>

@@ -1,3 +1,169 @@
-// Place all the styles related to the rooms controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: https://sass-lang.com/
+//rooms/index
+
+.room-index-container {
+  margin: 0 auto;
+  max-width: 1440px;
+  padding: 50px 100px 150px;
+}
+
+.room-index-header {
+  margin-bottom: 30px;
+}
+
+.room-index-table {
+  width: 100%
+}
+
+//rooms/new、rooms/edit
+
+.rooms-new-wrapper {
+  margin: 0 auto;
+  max-width: 1440px;
+  padding: 50px 0 150px;
+  width: 700px;
+  text-align: center;
+}
+
+.rooms-new-wrapper h1 {
+  margin-bottom: 20px; 
+}
+
+.rooms-new-wrapper span {
+  color: red;
+}
+
+.rooms-new-container {
+  padding-top: 20px; 
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.rooms-label {
+  font-weight: 600;
+  text-align: left;
+  width: 25%;
+}
+
+.rooms-form-container {
+  width: 75%;
+}
+
+.rooms-form-content {
+  width: 100%;
+}
+
+.rooms-button {
+  margin-top: 15px;
+}
+
+//rooms/show
+
+.rooms-show-wrapper {
+  margin: 0 auto;
+  padding: 40px 32px 120px;
+  max-width: 1440px;
+  text-align: center;
+  width: 100%
+}
+
+.rooms-show-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+  gap: 40px;
+}
+
+.rooms-show-header {
+  font-size: 24px;  
+}
+
+.rooms-show-content {
+  background:#d1d5da;
+  border-radius: 20px;
+  padding: 40px;
+  font-weight: 600;
+  width: 800px;
+}
+
+.rooms-show-first {
+  display: flex;
+  justify-content: space-between;
+  font-size: 35px;
+  color: #F09000;
+}
+
+.rooms-show-last {
+  text-align: left;
+  color: gray;
+}
+
+.rooms-show-form-title {
+  background: #fff;
+  width: 100%;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.rooms-show-form-title p {
+  text-align: left;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+//rooms/search
+
+.rooms-seacrh-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background:#d1d5da;
+  height: 130px;
+  margin: 0 auto;
+  width: 1440px;
+  width: 100%;
+}
+
+.rooms-search-content {
+  display: flex;
+  justify-content: space-between;
+}
+
+.rooms-search-content > div {
+  margin: 0 10px;
+}
+
+.rooms-search-wrapper {
+  margin: 0 auto;
+  width: 1440px;
+  padding: 40px 0 100px;
+}
+
+.rooms-search-wrapper h1 {
+  font-size: 30px;
+  margin-bottom: 20px;
+}
+
+.RoomList {
+  display: flex;
+  flex-wrap: wrap;
+  grid-gap: 32px;
+  gap: 32px;
+}
+
+.Room {
+  background: #d1d5da;
+  border-radius: 26px;
+  width: calc(33.33333% - 21.33333px);
+}
+
+.Room_image {
+  border-radius: 26px 26px 0 0;
+  width: 100%;
+}
+
+.RoomBodyWrapper {
+  padding: 40px 24px;
+}

@@ -2,38 +2,44 @@
   <h1>設定</h1>
 
   <div class="clearfix">
-    <div class="users-float">
-      <div class="users-link-container">
-        <div class="d-grid gap-2 col-6">
-          <%= link_to "アカウント", account_path(@user.id),class: "a btn btn-primary" %>
-          <%= link_to "プロフィール", user_path(@user.id),class: "a btn btn-primary" %>
-        </div>
+    <div class="users-link-container">
+      <div class="d-grid gap-2 col-6">
+        <%= link_to "アカウント", account_path(@user.id),class: "a btn btn-primary" %>
+        <%= link_to "プロフィール", user_path(@user.id),class: "a btn btn-primary" %>
       </div>
     </div>
 
-    <div class="users-float">
+    <div class="users-form-container">
       <h1 class="registrations-edit-header">アカウント</h1>
 
       <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
 
       <div class="registrations-field">
         <%= f.label :email,class: "registrations-label" %>
-        <%= f.email_field :email, autocomplete: "email",class: "registrations-blank form-control-lg" %>
+        <div class="users-form-content">
+          <%= f.email_field :email, autocomplete: "email",class: "registrations-blank form-control form-control-lg" %>
+        </div>
       </div>
 
       <div class="registrations-field">
         <%= f.label :password_change,class: "registrations-label" %>
-        <%= f.password_field :password, autocomplete: "new-password",class: "registrations-blank form-control-lg" %>
+        <div class="users-form-content">
+          <%= f.password_field :password, autocomplete: "new-password",class: "registrations-blank form-control form-control-lg" %>
+        </div>
       </div>
 
       <div class="registrations-field">
         <%= f.label :password_confirmation,class: "registrations-label" %>
-        <%= f.password_field :password_confirmation, autocomplete: "new-password",class: "registrations-blank form-control-lg" %>
+        <div class="users-form-content">
+          <%= f.password_field :password_confirmation, autocomplete: "new-password",class: "registrations-blank form-control form-control-lg" %>
+        </div>
       </div>
 
       <div class="registrations-field">
         <%= f.label :current_password,class: "registrations-label" %>
-        <%= f.password_field :current_password, autocomplete: "current-password",class: "registrations-blank form-control-lg" %>
+        <div class="users-form-content">
+          <%= f.password_field :current_password, autocomplete: "current-password",class: "registrations-blank form-control form-control-lg" %>
+        </div>
       </div>
 
       <div class="registrations-actions">

@@ -1,0 +1,82 @@
+//reservations/confirm、reservations/edit_confirm共通
+
+.reservations-wrapper {
+  margin: 0 auto;
+  padding: 50px 0 100px;
+  width: 100%;
+  max-width: 1440px;
+  text-align: center;
+  width: 600px;
+}
+
+.reservations-wrapper h1 {
+  margin-bottom: 20px;
+}
+
+.reservations-container {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  font-size: 20px;
+}
+
+.reservations-container p {
+  font-weight: 600;
+}
+
+.confirm-footer {
+  color: red;
+  font-size: 18px;
+}
+
+//reservations/edit 
+
+ .reservations-edit-wrapper {
+  margin: 0 auto;
+  padding: 40px 100px 100px;
+  text-align: center;
+  max-width: 1440px;
+  width: 900px;
+}
+
+.reservations-edit-wrapper h1 {
+  margin-bottom: 35px;
+}
+
+.reservations-edit-container {
+  display: flex;
+  justify-content: space-between;
+  font-size: 30px;
+  padding: 30px 0 0;
+}
+
+.reservations-edit-container p:last-child {
+  color: #FF4F50;
+  font-weight: 600;
+}
+
+.reservations-edit-group p:first-child {
+  color: gray;
+  font-weight: 600;
+}
+
+.reservations-edit-group p:last-child {
+  font-size: 22px;
+}
+
+.reservations-edit-content {
+  text-align: left;
+}
+
+.reservations-edit-group-in p {
+margin-top: 30px;
+font-weight: 600;
+}
+
+.reservations-edit-group-in span {
+  color: red;
+}
+
+.reservations-edit-button {
+  margin: 30px 0;
+}

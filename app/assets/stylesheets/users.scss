@@ -1,4 +1,4 @@
-// users/show、accounts/show共通
+// users/show、users/edit、accounts/show、registrations/edit共通
 
 .users-check-container {
   padding: 60px 50px 200px;
@@ -6,12 +6,8 @@
   width: 100%;
 }
 
-.users-float {
-  float: left;
-}
-
 .users-link-container {
-  width: 250px;
+  width: 25%;
 }
 
 .users-header {
@@ -20,8 +16,18 @@
   margin-bottom: 30px;
 }
 
+.users-form-container {
+  width: 75%
+}
+
 .registrations-edit-header {
   margin-bottom: 30px;
+}
+
+.clearfix {
+  gap: 30px;
+  display: flex;
+  justify-content: space-between;
 }
 
 .registrations-field {
@@ -32,11 +38,15 @@
 
 .registrations-label {
   font-weight: 600;
-  width: 250px; 
+  width: 25%; 
+}
+
+.users-form-content {
+  width: 75%;
 }
 
 .registrations-blank {
- width: 700px;
+ width: 100%;
 }
 
 .registrations-actions {
@@ -46,3 +56,4 @@
   gap: 20px;
   justify-content: flex-end;
 }
+

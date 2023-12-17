@@ -1,33 +1,53 @@
-<h1>施設情報の編集</h1>
+<div class="rooms-new-wrapper">
+  <h1>施設情報の編集</h1>
 
-<%= form_with model: @room do |f| %>
-  <table>
-    <tr>
-      <th><%= f.label :room_name, "施設名" %><span>*</span></th>
-      <td><%= f.text_field :room_name %></td>
-    </tr>
+  <%= form_with model: @room do |f| %>
+  <div class="rooms-new-container">
+    <div class="rooms-label">
+      <%= f.label :room_name, "施設名" %><span>*</span>
+    </div>
+    <div class="rooms-form-container">
+      <%= f.text_field :room_name, class: "rooms-form-content form-control form-control-lg" %>
+    </div>
+  </div>
 
-    <tr>
-      <th><%= f.label :room_introduction, "施設詳細" %><span>*</span></th>
-      <td><%= f.text_area :room_introduction %></td>
-    </tr>
+  <div class="rooms-new-container">
+    <div class="rooms-label">
+      <%= f.label :room_introduction, "施設詳細" %><span>*</span>
+    </div>
+    <div class="rooms-form-container">
+      <%= f.text_area :room_introduction, class: "rooms-form-content form-control form-control-lg" %>
+    </div>
+  </div>
 
-    <tr>
-      <th><%= f.label :money, "料金" %><span>*</span></th>
-      <td><%= f.text_field :money %></td>
-    </tr>
+  <div class="rooms-new-container">
+    <div class="rooms-label">
+      <%= f.label :money, "料金" %><span>*</span>
+    </div>
+    <div class="rooms-form-container">
+      <%= f.text_field :money, class: "rooms-form-content form-control form-control-lg" %>
+    </div>
+  </div>
 
-    <tr>
-      <th><%= f.label :address, "住所" %><span>*</span></th>
-      <td><%= f.text_field :address %></td>
-    </tr>
+  <div class="rooms-new-container">
+    <div class="rooms-label">
+      <%= f.label :address, "住所" %><span>*</span>
+    </div>
+    <div class="rooms-form-container">
+      <%= f.text_field :address, class: "rooms-form-content form-control form-control-lg" %>
+    </div>
+  </div>
 
-    <tr>
-      <th><%= f.label :image_room, "施設画像" %></th>
-      <td><%= f.file_field :image_room %></td>
-    </tr>
-  </table>
+  <div class="rooms-new-container">
+    <%= f.label :image_room, "施設画像", class: "rooms-label" %>
+    <div class="rooms-form-container">
+      <%= f.file_field :image_room, class: "rooms-form-content" %>
+    </div>
+  </div>
 
-  <%= f.submit "保存" %>
-  <%= link_to "キャンセル", :back %> 
-<% end %>
+  <div class="d-grid gap-2 col-6 mx-auto">
+    <%= f.submit "保存", class: "rooms-button btn btn-outline-primary h-75" %>
+    <%= link_to "キャンセル", :back, class: "a rooms-button btn btn-outline-dark h-75" %>
+  </div>
+  <% end %>
+</div>

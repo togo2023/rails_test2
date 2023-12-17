@@ -1,21 +1,41 @@
-<%= form_with url: search_rooms_path, method: :get do |f| %>
-  <%= f.text_field :erea, placeholder: "エリア名を入力" %>
-  <%= f.text_field :keyword, placeholder: "キーワード名を入力" %>
-  <%= f.submit "検索" %>
-<% end %>
+<div class="rooms-seacrh-header">
+  <%= form_with url: search_rooms_path, method: :get do |f| %>
+    <div class="rooms-search-content">
+      <div>
+        <%= f.text_field :erea, placeholder: "エリア名を入力",class: "form-control" %>
+      </div>
+      <div>
+        <%= f.text_field :keyword, placeholder: "キーワード名を入力",class: "form-control" %>
+      </div>
+      <div>
+        <%= f.submit "検索", class: "btn btn-outline-dark" %>
+      </div>
+    </div>
+  <% end %>
+</div>
 
-<h1><%= @rooms.count %><span>件が見つかりました。</span></h1>
+<div class="rooms-search-wrapper">
+  <h1><%= @rooms.count %><span>件が見つかりました。</span></h1>
 
-<% @rooms.each do |room| %>
-  <% if room.image_room.attached? %>
-    <%= image_tag(rails_blob_path(room.image_room), size: "50x50",  alt: "ルーム画像") %>
-  <% else %>
-    <%= image_tag("default_room.png", size: "50x50",  alt: "ルーム画像") %>
-  <% end %>  
+  <ul class="RoomList">
+    <li class="Room">
+      <% @rooms.each do |room| %>
+      <% if room.image_room.attached? %>
+      <%= image_tag(rails_blob_path(room.image_room), size: "430x240",  alt: "ルーム画像", class: "Room_image") %>
+      <% else %>
+      <%= image_tag("default_room.png", size: "430x240",  alt: "ルーム画像", class: "Room_image") %>
+      <% end %>
 
-  <%= room.room_name %>
-  <%= room.address %>
-  <%= room.room_introduction %>
-  <%= "¥#{room.money}~" %>
-  <%= link_to "詳細はこちら", room_path(room.id) %>
-<% end %>
+      <div class="RoomBodyWrapper">
+        <p><%= room.room_name %></p>
+        <p><%= room.address %></p>
+        <p><%= room.room_introduction %></p>
+        <div class="RoomFooter">
+          <p><%= "¥#{room.money}~" %></p>
+          <p><%= link_to "詳細はこちら", room_path(room.id) %></p>
+        </div>
+      </div>
+      <% end %>
+    </li>
+  </ul>
+</div>

@@ -2,18 +2,17 @@
   <h1>設定</h1>
 
   <div class="clearfix">
-    <div class="users-float">
-      <div class="users-link-container">
-        <div class="d-grid gap-2 col-6">
-          <%= link_to "アカウント", account_path(@account.id),class: "a btn btn-primary" %>
-          <%= link_to "プロフィール", user_path(@account.id),class: "a btn btn-primary" %>
-        </div>
+    <div class="users-link-container">
+      <div class="d-grid gap-2 col-6">
+        <%= link_to "アカウント", account_path(@account.id),class: "a btn btn-primary" %>
+        <%= link_to "プロフィール", user_path(@account.id),class: "a btn btn-primary" %>
       </div>
     </div>
 
-    <div class="users-float">
+    <div class="users-form-container">
       <div class="users-header">
         <h1>アカウント</h1>
+
         <%= link_to "編集", edit_user_registration_path, class: "a btn btn-outline-dark" %>
       </div>
       <p>メールアドレス</p>

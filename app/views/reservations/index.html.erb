@@ -1,40 +1,50 @@
-<h1>予約済み一覧</h1>
+<div class="room-index-container">
+  <h1 class="room-index-header">予約済み一覧</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>画像</th>
-      <th>施設名</th>
-      <th>紹介文</th>
-      <th>合計料金</th>
-      <th>チェックイン</th>
-      <th>チェックアウト</th>
-      <th>人数</th>
-      <th>予約確定日時</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @reservations.each do |reservation| %>
+  <table class="room-index-table">
+    <thead>
       <tr>
-        <td>
-          <% if reservation.room.image_room.attached? %>
-            <%= image_tag(rails_blob_path(reservation.room.image_room), size: "50x50",  alt: "ルーム画像") %>
-          <% else %>
-            <%= image_tag("default_room.png", size: "50x50",  alt: "ルーム画像") %>
-          <% end %>
-        </td>
-        <td><%= link_to reservation.room.room_name, room_path(reservation.room.id) %></td>
-        <td><%= reservation.room.room_introduction %></td>
-        <td><span>¥</span><%= reservation.total_money %></td>
-                                                                   <!-- 後から３桁区切りにする -->
-        <td><%= reservation.check_in.to_s(:room) %></td>
-        <td><%= reservation.check_out.to_s(:room) %></td>
-        <td><%= "#{reservation.people}人" %></td>
-        <td><%= reservation.created_at.to_s(:reservation) %></td>
-        <td><%= link_to "再予約", edit_reservation_path(reservation.id) %></td>   <!-- 後からドロップダウンメニュー -->
-        <td><%= link_to "予約を削除", reservation_path(reservation.id), method: :delete, data: { confirm: "本当に削除しますか？" } %></td>  <!-- 後からドロップダウンメニュー -->
+        <th>画像</th>
+        <th>施設名</th>
+        <th>紹介文</th>
+        <th>合計料金</th>
+        <th>チェックイン</th>
+        <th>チェックアウト</th>
+        <th>予約人数</th>
+        <th>予約確定日時</th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+
+    <tbody>
+      <% @reservations.each do |reservation| %>
+        <tr>
+          <td>
+            <%= link_to room_path(reservation.room_id) do %>
+              <% if reservation.room.image_room.attached? %>
+                <%= image_tag(rails_blob_path(reservation.room.image_room), size: "150x100", alt: "ルーム画像") %>
+              <% else %>
+                <%= image_tag("default_room.png", size: "150x100",  alt: "ルーム画像") %>
+              <% end %>
+            <% end %>
+          </td>
+          <td><%= link_to reservation.room.room_name, room_path(reservation.room_id), class: "a"  %></td>
+          <td><%= reservation.room.room_introduction %></td>
+          <td><span>¥</span><%= reservation.total_money %></td>
+          <td><%= reservation.check_in.to_s(:room) %></td>
+          <td><%= reservation.check_out.to_s(:room) %></td>
+          <td><%= "#{reservation.people}人" %></td>
+          <td><%= reservation.created_at.to_s(:reservation) %></td>
+          <td>
+            <div class="dropdown">
+              <a class="btn" role="button" data-bs-toggle="dropdown"><i class="fa-solid fa-bars"></i></a>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                <%= link_to "再予約", edit_reservation_path(reservation.id), class: "dropdown-item" %>
+                <%= link_to "予約を削除", reservation_path(reservation.id), method: :delete, class: "dropdown-item", data: { confirm: "本当に削除しますか？" } %>
+              </div>
+            </div>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

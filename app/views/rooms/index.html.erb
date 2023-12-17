@@ -1,32 +1,44 @@
-<h1>施設登録済み一覧</h1>
+<div class="room-index-container">
+  <h1 class="room-index-header">施設登録済み一覧</h1>
 
-<table>
- <thead>
-    <tr>
-      <th>画像</th>
-      <th>施設名</th>
-      <th>紹介文</th>
-      <th>料金</th>
-      <th>作成日</th>
-    </tr>
-  </thead> 
-  <tbody>
-    <% @rooms.each do |room| %>
+
+  <table class="room-index-table">
+    <thead>
+      <tr>
+        <th>画像</th>
+        <th>施設名</th>
+        <th>紹介文</th>
+        <th>料金</th>
+        <th>作成日</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @rooms.each do |room| %>
       <tr>
         <td>
-          <% if room.image_room.attached? %>
-            <%= image_tag(rails_blob_path(room.image_room), size: "50x50",  alt: "ルーム画像") %>
-          <% else %>
-            <%= image_tag("default_room.png", size: "50x50",  alt: "ルーム画像") %>
+          <%= link_to room_path(room.id) do %>
+            <% if room.image_room.attached? %>
+              <%= image_tag(rails_blob_path(room.image_room), size: "150x100",  alt: "ルーム画像") %>
+            <% else %>
+              <%= image_tag("default_room.png", size: "150x100",  alt: "ルーム画像") %>
+            <% end %>
           <% end %>
         </td>
-        <td><%= link_to "#{room.room_name}", room_path(room.id) %></td>                          
+        <td><%= link_to "#{room.room_name}", room_path(room.id), class: "a" %></td>
         <td><%= room.room_introduction %></td>
-        <td><%= "¥#{room.money}" %></td>                               <!-- 後から３桁区切りにする -->
+        <td><%= "¥#{room.money}" %></td>
         <td><%= room.created_at.to_s(:room) %></td>
-        <td><%= link_to "編集", edit_room_path(room.id) %></td>      <!-- 後からドロップダウンメニュー -->
-        <td><%= link_to "施設を削除", room_path(room.id), method: :delete, data: { confirm: "本当に削除しますか？" } %></td> <!-- 後からドロップダウンメニュー -->
+        <td>
+          <div class="dropdown">
+            <a class="btn" role="button" data-bs-toggle="dropdown"><i class="fa-solid fa-bars"></i></a>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+              <%= link_to "編集", edit_room_path(room.id), class: "dropdown-item" %>
+              <%= link_to "施設を削除", room_path(room.id), method: :delete, class: "dropdown-item", data: { confirm: "本当に削除しますか？" } %>
+            </div>
+          </div>
+        </td>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+      <% end %>
+    </tbody>
+  </table>
+</div>

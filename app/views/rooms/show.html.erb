@@ -1,35 +1,52 @@
-<%= link_to "← 戻る", :back %>
-<% if user_signed_in? && @room.user_id == current_user.id %>
-  <%= link_to "編集", edit_room_path(@room.id) %>
-<% end %>
+<div class="rooms-show-wrapper">
+  <div class="rooms-show-container">
+    <%= link_to "← 戻る", :back,class: "a rooms-show-header" %>
+    <% if user_signed_in? && @room.user_id == current_user.id %>
+      <%= link_to "編集", edit_room_path(@room.id), class: "a rooms-show-header" %>
+    <% end %>
+  </div>
 
-<% if @room.image_room.attached? %>
-  <%= image_tag(rails_blob_path(@room.image_room), size: "50x50",  alt: "ルーム画像") %>
-<% else %>
-  <%= image_tag("default_room.png", size: "50x50",  alt: "ルーム画像") %>
-<% end %>
+  <div class="rooms-show-container">
+    <% if @room.image_room.attached? %>
+      <%= image_tag(rails_blob_path(@room.image_room), size: "550x350",  alt: "ルーム画像") %>
+    <% else %>
+      <%= image_tag("default_room.png", size: "550x350",  alt: "ルーム画像") %>
+    <% end %>
 
-<%= @room.room_name %>
-<%= "¥#{@room.money}~" %>
-<%= @room.address %>
-<%= @room.room_introduction %>
+    <div class="rooms-show-content">
+      <div class="rooms-show-first">
+        <p><%= @room.room_name %></p>
+        <p><%= "¥#{@room.money}~" %></p>
+      </div>
+      <p class="rooms-show-last"><%= @room.address %></p>
+      <p class="rooms-show-last"><%= @room.room_introduction %></p>
 
-<%= form_with model: @reservation, method: :get, url: confirm_reservations_path do |f| %>
-  <%= f.label :check_in, "チャックイン" %>
-  <%= f.date_field :check_in %>
+      <%= form_with model: @reservation, method: :get, url: confirm_reservations_path do |f| %>
 
-  <%= f.label :check_out, "チェックアウト" %>
-  <%= f.date_field :check_out %>
+        <div class="rooms-show-form-title">
+          <div>
+            <p><%= f.label :check_in, "チャックイン" %></p>
+            <%= f.date_field :check_in, class: "form-control" %>
+          </div>
+          <div>
+            <p><%= f.label :check_out, "チェックアウト" %></p>
+            <%= f.date_field :check_out, class: "form-control" %>
+          </div>
+          <div>
+            <p><%= f.label :people, "人数" %></p>
+            <%= f.text_field :people, placeholder: "0", class: "form-control" %>
+          </div>
+        </div>
 
-  <%= f.label :people, "人数" %>
-  <%= f.text_field :people, placeholder: "0" %>
+        <% if user_signed_in? %>
+          <%= f.hidden_field :user_id, value: current_user.id %>
+        <% end %>
+        <%= f.hidden_field :room_id, value: @room.id %>
 
-  <% if user_signed_in? && @room.user_id == current_user.id %>
-    <%= f.hidden_field :user_id, value: current_user.id %>
-  <% end %>
-  <%= f.hidden_field :room_id, value: @room.id %>
-
-  <%= f.submit "予約する" %>
-<% end %>
-
- 
+        <div class="d-grid gap-2 col-6 mx-auto">
+          <%= f.submit "予約する", class: "rooms-button btn btn-primary h-100" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

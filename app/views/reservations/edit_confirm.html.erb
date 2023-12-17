@@ -1,18 +1,34 @@
-<h1>予約内容の確認</h1>
+<div class="reservations-wrapper">
+  <h1>予約内容の確認</h1>
 
-<p>チェックイン</p>
-<%= @reservation.check_in.to_s(:room) %>
-<p>チェックアウト</p>
-<%= @reservation.check_out.to_s(:room) %>
-<p>日数</p>
-<%= @day %><span>日</span>
-<p>人数</p>
-<%= @reservation.people %><span>人</span>
-<p>お支払い金額</p>
-<span>¥</span><%= @total %>
-<p>上記内容で正しければ「確定」ボタンを押してください。</p>
+  <div class="reservations-container">
+    <p>チェックイン</p>
+    <%= @reservation.check_in.to_s(:room) %>
+  </div>
 
-<%= form_with model: @reservation do |f| %>
+  <div class="reservations-container">
+    <p>チェックアウト</p>
+    <%= @reservation.check_out.to_s(:room) %>
+  </div>
+
+  <div class="reservations-container">
+    <p>日数</p>
+    <div><%= @day %><span>日</span></div>
+  </div>
+
+  <div class="reservations-container">
+    <p>人数</p>
+    <div><%= @reservation.people %><span>人</span></div>
+  </div>
+
+  <div class="reservations-container">
+    <p>お支払い金額</p>
+    <div><span>¥</span><%= @total %></div>
+  </div>
+
+  <p class="confirm-footer">上記内容で正しければ「予約を確定」ボタンを押してください。</p>
+
+  <%= form_with model: @reservation do |f| %>
   <%= f.hidden_field :check_in, value: @reservation.check_in %>
   <%= f.hidden_field :check_out, value: @reservation.check_out %>
   <%= f.hidden_field :people, value: @reservation.people %>
@@ -20,6 +36,9 @@
   <%= f.hidden_field :room_id, value: @reservation.room.id %>
   <%= f.hidden_field :total_money, value: @total %>
 
-  <%= f.submit "予約を確定" %>
-  <%= link_to "キャンセル",  reservations_path %>
-<% end %>
+  <div class="d-grid gap-2 col-6 mx-auto">
+    <%= f.submit "予約を確定", class: "rooms-button btn btn-outline-primary h-75" %>
+    <%= link_to "キャンセル",  reservations_path, class: "a rooms-button btn btn-outline-dark h-75" %>
+  </div>
+  <% end %>
+</div>

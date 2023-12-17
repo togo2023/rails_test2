@@ -1,28 +1,42 @@
-<h1>再予約する</h1>
+<div class="reservations-edit-wrapper">
+  <h1>再予約する</h1>
 
-<% if @reservation.room.image_room.attached? %>
-  <%= image_tag(rails_blob_path(@reservation.room.image_room), size: "50x100", alt: "ルーム画像") %>
-<% else %>
-  <%= image_tag("default_room.png", size: "50x100", alt: "ルーム画像") %>
-<% end %>
+  <% if @reservation.room.image_room.attached? %>
+    <%= image_tag(rails_blob_path(@reservation.room.image_room), size: "700x400", alt: "ルーム画像") %>
+  <% else %>
+    <%= image_tag("default_room.png", size: "700x400", alt: "ルーム画像") %>
+  <% end %>
 
-<%= @reservation.room.room_name %>
-<%= "¥#{@reservation.room.money}~" %>
-<%= @reservation.room.address %>
-<%= @reservation.room.room_introduction %>
+  <div class="reservations-edit-container">
+    <p><%= @reservation.room.room_name %></p>
+    <p><%= "¥#{@reservation.room.money}~" %></p>
+  </div>
+  <div class="reservations-edit-content">
+    <div class="reservations-edit-group">
+      <p><%= @reservation.room.address %></p>
+      <p><%= @reservation.room.room_introduction %></p>
+    </div>
 
-<%= form_with model: @reservation, url: edit_confirm_reservation_path(@reservation.id), method: :get do |f| %>
-  <%= f.label :check_in, "チェックイン" %><span>*</span>
-  <%= f.date_field :check_in %>
-  <%= f.label :check_out, "チェックアウト" %><span>*</span>
-  <%= f.date_field :check_out %>
-  <%= f.label :people, "人数" %><span>*</span>
-  <%= f.text_field :people, placeholder: "0" %>
-  <%= f.hidden_field :user_id, value: current_user.id %>
-  <%= f.hidden_field :room_id, value: @reservation.room.id %>
+    <div class="reservations-edit-group-in">
+      <%= form_with model: @reservation, url: edit_confirm_reservation_path(@reservation.id), method: :get do |f| %>
 
-  <%= f.submit "再予約する" %>
-  <%= link_to "キャンセル", reservations_path %>
-<% end %>
+        <p><%= f.label :check_in, "チェックイン" %><span>*</span></p>
+        <%= f.date_field :check_in, class: "form-control form-control-lg" %>
 
+        <p><%= f.label :check_out, "チェックアウト" %><span>*</span></p>
+        <%= f.date_field :check_out, class: "form-control form-control-lg" %>
 
+        <p><%= f.label :people, "人数" %><span>*</span></p>
+        <%= f.text_field :people, placeholder: "0", class: "form-control form-control-lg" %>
+
+        <%= f.hidden_field :user_id, value: current_user.id %>
+        <%= f.hidden_field :room_id, value: @reservation.room.id %>
+
+        <div class="d-grid gap-2 col-6 mx-auto">
+          <%= f.submit "再予約する", class: "btn btn-outline-primary reservations-edit-button" %>
+          <%= link_to "キャンセル", reservations_path, class: "btn btn-outline-dark" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
